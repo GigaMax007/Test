@@ -115,7 +115,6 @@ public class TestTask {
         System.out.println("TestTask.workFile " + new Date().toString());
         String wfName = name != null ? name : "All";
         String wfEncoding = encoding != null ? encoding : "UTF-8";
-
         workList = new Word();
         BufferedReader reader;
         // Считываем файл name, например "smallInput12.txt"
@@ -127,34 +126,20 @@ public class TestTask {
                 StringTokenizer st = new StringTokenizer(line, " \t\r\f\\\'\"():,.&!|/«»@;*{}[]? ");
                 while (st.hasMoreTokens()) {
                     workList.alList.add(st.nextToken());
-                    //workList.alCount.add(st.countTokens());
                     }
                 }
             reader.close();
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-
-//        System.out.println("Create:\nworkList = " + workList);
-//        for (int i = 0; i < 10; i++) {
-//            System.out.print(i + " workList.alList = " + workList.alList.get(i));
-//        }
         System.out.println("workList.alList.size() = " + workList.alList.size());
-//        System.out.println("workList.alCount.size() = " + workList.alCount.size());
         System.out.println("Translate workList to lower case:" + new Date().toString());
-
         lowerCase = new Word();
         // Перевод массива в нижний регистр
         for (int i = 0; i < workList.alList.size(); i++) {
             lowerCase.alList.add(workList.alList.get(i).toLowerCase());
         }
-
         System.out.print("lowerCase = " + lowerCase + new Date().toString());
-//        for (int i = 0; i < 10; i++) {
-//
-//            System.out.println(i + " lowerCase.alList = " + lowerCase.alList.get(i));
-//
-//        }
         System.out.println("lowerCase.alList.size() = " + lowerCase.alList.size());
         System.out.println("lowerCase.alCount.size() = " + lowerCase.alCount.size());
     }
@@ -163,74 +148,46 @@ public class TestTask {
     public static void analizeFile() {
         System.out.println("TestTask.analizeFile " + new Date().toString());
         System.out.println("lowerCase = " + lowerCase);
-//        for (int i = 0; i < 10; i++) {
-//            System.out.println(i + " lowerCase.alList = " + lowerCase.alList.get(i));
-//
-//        }
         System.out.println("lowerCase.alList.size() = " + lowerCase.alList.size());
         System.out.println("lowerCase.alCount.size() = " + lowerCase.alCount.size());
-
         int z = lowerCase.alList.size() - 1;
         int c = 0; // счетчик
-//        System.out.println(z);
         for (int i = 0; i < z; i++) {
-
             for (int j = z; (j > i) & (j > 0); j--) {
-
                 if (lowerCase.alList.get(j).equals(lowerCase.alList.get(i))) {
                     c++;
-
                     lowerCase.alList.remove(j);
                 }
-
             }
             z = z - c;
-//            System.out.println(z);
             lowerCase.alCount.add(c + 1);
             c = 0; // счетчик обнулен
             if ((i == z - 1)&!(lowerCase.alList.get(z - 1).equals(lowerCase.alList.get(z)))) lowerCase.alCount.add(1);
         }
-
         System.out.println("Word countig end:");
         System.out.println("TestTask.analizeFile " + new Date().toString());
         System.out.println("lowerCase = " + lowerCase);
         System.out.println("lowerCase.alCount.size() = " + lowerCase.alCount.size());
-
         System.out.println("lowerCase.alList.size = " + lowerCase.alList.size());
         analizeList = lowerCase;
         System.out.println("TestTask.analizeFile " + new Date().toString());
         System.out.println("analizeList = " + analizeList);
-//        for (int i = 0; i < 10; i++) {
-//            System.out.print(i + " analizeList.alList = " + analizeList.alList.get(i));
-//            System.out.println(" analizeList.alCount = " + analizeList.alCount.get(i));
-//        }
-
         System.out.println("analizeList.alList.size() = " + analizeList.alList.size());
         System.out.println("analizeList.alCount.size() = " + analizeList.alCount.size());
-
+        // Удаление указателей на экземпляры класса Word
         workList = null;
         lowerCase = null;
-
     }
 
     public static void analizeFile(String nameList) {
-
         if (nameList == "sortList") {
-
             System.out.println("TestTask.analizeFile " + new Date().toString());
             System.out.println("sortList = " + sortList);
-//            for (int i = 0; i < 10; i++) {
-//                System.out.println(i + " lowerCase.alList = " + sortList.alList.get(i));
-//
-//            }
             System.out.println(".alList.size() = " + sortList.alList.size());
             System.out.println(".alCount.size() = " + sortList.alCount.size());
-
             int z = sortList.alList.size() - 1;
             int c = 0; // счетчик
-//            System.out.println(z);
             for (int i = 0; i < z; i++) {
-
                 for (int j = z; (j > i) & (j > 0); j--) {
                     if (sortList.alList.get(j).equals(sortList.alList.get(i))) {
                         c++;
@@ -240,10 +197,8 @@ public class TestTask {
                     }
                 }
                 z = z - c;
-//                System.out.println(z);
                 c = 0; // счетчик обнулен
             }
-
             System.out.println("Word countig end:");
             System.out.println("TestTask.analizeFile " + new Date().toString());
             System.out.println(" = " + sortList);
@@ -252,22 +207,16 @@ public class TestTask {
             analizeList = sortList;
             System.out.println("TestTask.analizeFile " + new Date().toString());
             System.out.println("analizeList = " + analizeList);
-//            for (int i = 0; i < 10; i++) {
-//                System.out.print(i + " analizeList.alList = " + analizeList.alList.get(i));
-//                System.out.println(" analizeList.alCount = " + analizeList.alCount.get(i));
-//            }
-
             System.out.println("analizeList.alList.size() = " + analizeList.alList.size());
             System.out.println("analizeList.alCount.size() = " + analizeList.alCount.size());
-
+            // Удаление указателей на экземпляры класса Word
             workList = null;
             lowerCase = null;
             sortList = null;
-
         }
     }
 
-    // Сортирует массивы в обратном порядке по количеству повторений
+    // Сортирует массивы от min до max - значений по количеству слов объекта
     public static void sortFile(Word massiv) {
         int size = massiv.alCount.size();
         int dump = 0;
@@ -310,21 +259,12 @@ public class TestTask {
         System.out.println("End TestTask.sortMaxFile " + new Date().toString());
     }
 
-//    public static void sortFile(String workFile, String encoding, int sortQuantity) {
-//        String sfWorkFile = workFile != null ? workFile : "workFile.txt";
-//        String sfEncoding = encoding != null ? encoding : "UTF-8";
-//        int sfSortQuantity = sortQuantity;
-//        sortList = new Word();
-//
-//    }
-
     // Метод сохраняет список во временный файл, повторный вызов допишет новые данные к имеющимся в файле
     public static void  safeFile(String nameFile, Word massiv) {
         String sfNameFile = "OutTemp_" + nameFile + ".txt";
         System.out.println("Start TestTask.safeFile " + new Date().toString());
-
+        // Сравнение размеров списка слов и количества их в файле, добавляет элемента 0 к alCount
         if (massiv.alList.size() > massiv.alCount.size()) massiv.alCount.add(0);
-
         try (FileWriter writer1 = new FileWriter(sfNameFile, true)) {
             for (int i = 0; i < massiv.alList.size(); i++) {
                 String text = massiv.alList.get(i) + " " + massiv.alCount.get(i) + "\n";
@@ -332,26 +272,20 @@ public class TestTask {
             }
             writer1.flush();
             massiv = null;
-
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-
         System.out.println(sfNameFile + " safed at " + (new Date().toString()));
     }
 
     // Метод загружает список слов из файла name и присваивает переменной massiv
     public static void loadFile(String name, String encoding,String nameList) throws IOException {
         System.out.println("Start TestTask.loadFile " + new Date().toString());
-
         Word massiv = new Word();
-
-
         String lfName = name != null ? name : "OutTemp_analizeList_.txt";
         String lfEncoding = encoding != null ? encoding : "UTF-8";
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(lfName), lfEncoding));
         for (String line; (line = reader.readLine()) != null; ) {
-//            System.out.println(line);
             StringTokenizer st = new StringTokenizer(line);
             int c = 0;
             while (st.hasMoreTokens()) {
@@ -360,7 +294,8 @@ public class TestTask {
                 c++;
             }
         }
-
+        // Загружаем список слов из временного файла и одному из указателей присваиваем массив,
+        // остальные переменный обнуляем
         analizeList = nameList == "analizeList" ? massiv : null;
         workList = nameList == "workList" ? massiv : null;
         lowerCase = nameList == "lowerCase" ? massiv : null;
@@ -369,7 +304,7 @@ public class TestTask {
         System.out.println("End TestTask.loadFile " + new Date().toString());
     }
 
-    // Вывод итогового массива
+    // Вывод в консоль для проверки объекта, на который ссылается переменная
     public static void chekIt(Word massiv) {
         for (int i = 0; i < massiv.alList.size(); i++) {
             if (massiv.alCount.size() == massiv.alList.size())
@@ -386,11 +321,16 @@ public class TestTask {
             System.out.print(sortList.alList.get(i));
             System.out.println(" " + sortList.alCount.get(i));
         }
-
     }
 
-    // Метод result(N) - ...
-    public static void result(int n) {}
+    // Метод result(N) - выводит в консоль (Standart Out) отсортированные в обратном порядке N слов
+    public static void result(int n) {
+        System.out.println("TestTask.result " + new Date().toString());
+        for (int i = 0; i < n; i++) {
+            System.out.print(sortList.alList.get(i));
+            System.out.println(" " + sortList.alCount.get(i));
+        }
+    }
 
     // Метод result(N, outFile) - ...
     public static  void result(int n, String outFile) {}
