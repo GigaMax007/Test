@@ -1,7 +1,6 @@
 package ru.gigamax.test;
 
 import java.io.*;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.StringTokenizer;
@@ -14,9 +13,9 @@ import java.util.StringTokenizer;
 * отсортирован в обратном порядке по количество упоминаний. Вывод результата в консоль (standart out).
 *
 * Требования:
-
+*
 * Ограничение по ОЗУ — не более 512МБ (-Xmx512m).
-
+*
 * Размер текстового файла намного больше ОЗУ.
 * Количество уникальных слов в текстовом файле не более 10000 шт.
 *
@@ -49,15 +48,10 @@ public class TestTask {
     public static Word analizeList;
     public static Word sortList;
 
-    // Создание класса с двумя полями: списка слов и количества повторений
+    // Создание объекта типа Word с двумя полями: списочный массив alList - слова и alCount - количество их в файле
     public static class Word {
         ArrayList<String> alList;
         ArrayList<Integer> alCount;
-
-        public Word(int quantity) {
-           alList = new ArrayList<>(quantity);
-           alCount = new ArrayList<>(quantity);
-        }
 
         public Word() {
             alList = new ArrayList<>();
@@ -80,7 +74,7 @@ public class TestTask {
             for (String line1; (line1 = reader.readLine()) != null; ) {
                 if (countLine++ % maxlines == 0) {
                     writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("smallInput" + (countLine / maxlines) + ".txt"), dBVEncoding));
-                    countFiles = countLine / maxlines; // Итоговое число файлов равно (countLine + 1)
+                    countFiles = countLine / maxlines; // Итоговое число файлов равно (countFiles + 1)
                 }
                 writer.write(line1);
                 writer.newLine();
