@@ -1,6 +1,5 @@
 package ru.gigamax.test;
 
-
 import java.io.*;
 
 import java.util.ArrayList;
