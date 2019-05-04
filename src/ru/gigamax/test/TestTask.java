@@ -85,7 +85,7 @@ public class TestTask {
         String dBVName = name != null ? name : "input.txt";
         String dBVEncoding = encoding != null ? encoding : "UTF-8";
         int count1Mb = 0;
-        long l = 0;
+        long l = 0; // Cчетчик длин строк
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(dBVName), dBVEncoding));
             for (String line1; (line1 = reader.readLine()) != null; ) {
@@ -94,14 +94,12 @@ public class TestTask {
                     l = 0;
                     count1Mb++;
                 }
-                System.out.println("c = " + count1Mb);
                 if (count1Mb % maxlines == 0) {
                     writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("smallInput" + (count1Mb / maxlines) + ".txt"), dBVEncoding));
                     countFiles = count1Mb / maxlines; // Итоговое число файлов равно (countFiles + 1)
                 }
                 writer.write(line1);
                 writer.newLine();
-                //System.out.println("line1.length() = " + line1.length());
             }
             writer.flush();
         } catch (IOException ex) {
@@ -112,17 +110,24 @@ public class TestTask {
     // Метод деления файла большой длины на число (countFiles + 1) файлов поменьше.
     // по умолчанию файл - "input.txt" , кодировка - "UTF-8"
     public static void divBigFile() {
-        int maxlines = 25000;
+        int sizeMb = 30;
+        int maxlines = sizeMb;
         BufferedWriter writer = null;
         String dBVName = "input.txt";
         String dBVEncoding = "UTF-8";
-        int countLine = 0;
+        int count1Mb = 0;
+        long l = 0; // Cчетчик длин строк
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(dBVName), dBVEncoding));
             for (String line1; (line1 = reader.readLine()) != null; ) {
-                if (countLine++ % maxlines == 0) {
-                    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("smallInput" + (countLine / maxlines) + ".txt"), dBVEncoding));
-                    countFiles = countLine / maxlines; // Итоговое число файлов равно (countLine + 1)
+                l += (long)line1.length();
+                if (l > 1048576) {
+                    l = 0;
+                    count1Mb++;
+                }
+                if (count1Mb % maxlines == 0) {
+                    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("smallInput" + (count1Mb / maxlines) + ".txt"), dBVEncoding));
+                    countFiles = count1Mb / maxlines; // Итоговое число файлов равно (countFiles + 1)
                 }
                 writer.write(line1);
                 writer.newLine();
@@ -132,7 +137,7 @@ public class TestTask {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     // Метод создает массивы слов, в нижнем регистре из файла, и количества повторений, и
     // записывает их в рабочий файл
     public static void workFile(String name, String encoding) {
@@ -357,9 +362,14 @@ public class TestTask {
     }
 
     public static void main(String[] args) throws IOException {
-/*        // Решаем задачу на примере сортировки нескольких книг - война и мир
+       // Решаем задачу на примере сортировки нескольких книг - война и мир
+        long m = getFileSize(null);
+        System.out.println((double) m / 1024 + " Kb");
+        System.out.println((double)(m / 1024) / 1024 + " Mb");
+        System.out.println((double) m / 1024 / 1024 / 1024 + " Gb");
+
         String encoding = "Cp1251";
-        divBigFile(null, encoding);
+        divBigFile(null, encoding, 30);
 
         for (int i = 0; i <= countFiles; i++) {
             String nameFile = "smallInput" + i + ".txt";
@@ -375,13 +385,10 @@ public class TestTask {
         result();
         safeFile("result",sortList);
 
- */
-        long m = getFileSize(null);
-        System.out.println((double) m / 1024 + " Kb");
-        System.out.println((double)(m / 1024) / 1024 + " Mb");
-        System.out.println((double) m / 1024 / 1024 / 1024 + " Gb");
-        divBigFile(null,"Cp1251", 70);
-        workFile("smallInput0.txt", "Cp1251");
+
+
+//        divBigFile(null,"Cp1251", 70);
+//        workFile("smallInput0.txt", "Cp1251");
 
     }
 }
