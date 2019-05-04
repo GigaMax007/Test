@@ -73,8 +73,6 @@ public class TestTask {
         }
     }
 
-
-
     // Метод деления файла большой длины на число (countFiles + 1) файлов поменьше.
     // Итог работы файлы вида - smallInput0.txt ... smallInput10.txt
     // name - имя файла большого размера, если null, то принимает значение "input.txt"
@@ -362,11 +360,8 @@ public class TestTask {
     }
 
     public static void main(String[] args) throws IOException {
-       // Решаем задачу на примере сортировки нескольких книг - война и мир
-        long m = getFileSize(null);
-        System.out.println((double) m / 1024 + " Kb");
-        System.out.println((double)(m / 1024) / 1024 + " Mb");
-        System.out.println((double) m / 1024 / 1024 / 1024 + " Gb");
+        // Решаем задачу на примере сортировки нескольких книг - война и мир
+        // Файл input.txt увеличен до размера в 166 Mb
 
         String encoding = "Cp1251";
         divBigFile(null, encoding, 30);
@@ -384,12 +379,6 @@ public class TestTask {
         sortMaxFile(analizeList);
         result();
         safeFile("result",sortList);
-
-
-
-//        divBigFile(null,"Cp1251", 70);
-//        workFile("smallInput0.txt", "Cp1251");
-
     }
 }
 
