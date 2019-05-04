@@ -49,7 +49,7 @@ public class TestTask {
     public static Word sortList;
     private static long fileSize;
 
-    public static long getFileSize(String name, String encoding) {
+    public static long getFileSize(String name) {
         String fsName = name != null ? name : "input.txt";
 
         File f = new File(fsName);
@@ -79,21 +79,29 @@ public class TestTask {
     // Итог работы файлы вида - smallInput0.txt ... smallInput10.txt
     // name - имя файла большого размера, если null, то принимает значение "input.txt"
     // encoding - кодировка файла, если null, то принимает значение "UTF-8"
-    public static void divBigFile(String name, String encoding) {
-        int maxlines = 25000;
+    public static void divBigFile(String name, String encoding, int sizeMb) {
+        int maxlines = sizeMb;
         BufferedWriter writer = null;
         String dBVName = name != null ? name : "input.txt";
         String dBVEncoding = encoding != null ? encoding : "UTF-8";
-        int countLine = 0;
+        int count1Mb = 0;
+        long l = 0;
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(dBVName), dBVEncoding));
             for (String line1; (line1 = reader.readLine()) != null; ) {
-                if (countLine++ % maxlines == 0) {
-                    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("smallInput" + (countLine / maxlines) + ".txt"), dBVEncoding));
-                    countFiles = countLine / maxlines; // Итоговое число файлов равно (countFiles + 1)
+                l += (long)line1.length();
+                if (l > 1048576) {
+                    l = 0;
+                    count1Mb++;
+                }
+                System.out.println("c = " + count1Mb);
+                if (count1Mb % maxlines == 0) {
+                    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("smallInput" + (count1Mb / maxlines) + ".txt"), dBVEncoding));
+                    countFiles = count1Mb / maxlines; // Итоговое число файлов равно (countFiles + 1)
                 }
                 writer.write(line1);
                 writer.newLine();
+                //System.out.println("line1.length() = " + line1.length());
             }
             writer.flush();
         } catch (IOException ex) {
@@ -124,7 +132,7 @@ public class TestTask {
             System.out.println(ex.getMessage());
         }
     }
-
+    
     // Метод создает массивы слов, в нижнем регистре из файла, и количества повторений, и
     // записывает их в рабочий файл
     public static void workFile(String name, String encoding) {
@@ -368,10 +376,13 @@ public class TestTask {
         safeFile("result",sortList);
 
  */
-        long m = getFileSize(null, null);
+        long m = getFileSize(null);
         System.out.println((double) m / 1024 + " Kb");
         System.out.println((double)(m / 1024) / 1024 + " Mb");
         System.out.println((double) m / 1024 / 1024 / 1024 + " Gb");
+        divBigFile(null,"Cp1251", 70);
+        workFile("smallInput0.txt", "Cp1251");
+
     }
 }
 
