@@ -238,7 +238,7 @@ public class TestTask {
         }
     }
 
-    // Сортирует массивы от min до max - значений по количеству слов объекта
+    // Сортирует массивы от min до max - значений по количеству слов объекта методом пузырька
     public static void sortFile(Word massiv) {
         int size = massiv.alCount.size();
         int dump = 0;
@@ -259,6 +259,7 @@ public class TestTask {
         massiv = null;
     }
 
+    // Сортирует массивы от max до min - значений по количеству слов объекта методом пузырька
     public static void sortMaxFile(Word massiv) {
         int size = massiv.alCount.size();
         int dump = 0;
