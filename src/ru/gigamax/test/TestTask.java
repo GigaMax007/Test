@@ -47,20 +47,7 @@ public class TestTask {
     public static Word lowerCase;
     public static Word analizeList;
     public static Word sortList;
-    private static long fileSize;
 
-    public static long getFileSize(String name) {
-        String fsName = name != null ? name : "input.txt";
-
-        File f = new File(fsName);
-        fileSize = f.length();
-        System.out.println(fileSize);
-        return fileSize;
-    }
-
-    public static void setFileSize(long fileSize) {
-        TestTask.fileSize = fileSize;
-    }
 
     // Создание объекта типа Word с двумя полями: списочный массив alList - слова и alCount - количество их в файле
     public static class Word {
@@ -149,7 +136,7 @@ public class TestTask {
         try {
             reader = new BufferedReader(new InputStreamReader(new FileInputStream(wfName), wfEncoding));
             for (String line; (line = reader.readLine()) != null; ) {
-                StringTokenizer st = new StringTokenizer(line, " \t\r\f\\\'\"():,.&!|/«»@;*{}[]? ");
+                StringTokenizer st = new StringTokenizer(line, " \t\r\f\\\'\"():,.&!|/«»@;*{}[]?");
                 while (st.hasMoreTokens()) {
                     workList.alList.add(st.nextToken());
                     }
@@ -158,24 +145,18 @@ public class TestTask {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-        System.out.println("workList.alList.size() = " + workList.alList.size());
         System.out.println("Translate workList to lower case:" + new Date().toString());
         lowerCase = new Word();
         // Перевод массива в нижний регистр
         for (int i = 0; i < workList.alList.size(); i++) {
             lowerCase.alList.add(workList.alList.get(i).toLowerCase());
         }
-        System.out.println("lowerCase = " + lowerCase + new Date().toString());
         System.out.println("lowerCase.alList.size() = " + lowerCase.alList.size());
-        System.out.println("lowerCase.alCount.size() = " + lowerCase.alCount.size());
     }
 
     // Подсчет количества повторений и удаление повторов слов
     public static void analizeFile() {
         System.out.println("\nStart TestTask.analizeFile " + new Date().toString());
-        System.out.println("lowerCase = " + lowerCase);
-        System.out.println("lowerCase.alList.size() = " + lowerCase.alList.size());
-        System.out.println("lowerCase.alCount.size() = " + lowerCase.alCount.size());
         int z = lowerCase.alList.size() - 1;
         int c = 0; // счетчик
         for (int i = 0; i < z; i++) {
@@ -191,13 +172,8 @@ public class TestTask {
             if ((i == z - 1)&!(lowerCase.alList.get(z - 1).equals(lowerCase.alList.get(z)))) lowerCase.alCount.add(1);
         }
         System.out.println("\nWord countig end: " + new Date().toString());
-        System.out.println("lowerCase = " + lowerCase);
-        System.out.println("lowerCase.alCount.size() = " + lowerCase.alCount.size());
-        System.out.println("lowerCase.alList.size = " + lowerCase.alList.size());
         analizeList = lowerCase;
-        System.out.println("analizeList = " + analizeList);
         System.out.println("analizeList.alList.size() = " + analizeList.alList.size());
-        System.out.println("analizeList.alCount.size() = " + analizeList.alCount.size());
         // Удаление указателей на экземпляры класса Word
         workList = null;
         lowerCase = null;
@@ -206,9 +182,7 @@ public class TestTask {
     public static void analizeFile(String nameList) {
         if (nameList == "sortList") {
             System.out.println("\nStart TestTask.analizeFile " + new Date().toString());
-            System.out.println("sortList = " + sortList);
             System.out.println("sortList.alList.size() = " + sortList.alList.size());
-            System.out.println("sortList.alCount.size() = " + sortList.alCount.size());
             int z = sortList.alList.size() - 1;
             int c = 0; // счетчик
             for (int i = 0; i < z; i++) {
@@ -224,11 +198,7 @@ public class TestTask {
                 c = 0; // счетчик обнулен
             }
             System.out.println("\nWord countig end: " + new Date().toString());
-            System.out.println(" = " + sortList);
-            System.out.println("sortList.alCount.size() = " + sortList.alCount.size());
-            System.out.println("sortList.alList.size = " + sortList.alList.size());
             analizeList = sortList;
-            System.out.println("analizeList = " + analizeList);
             System.out.println("analizeList.alList.size() = " + analizeList.alList.size());
             System.out.println("analizeList.alCount.size() = " + analizeList.alCount.size());
             // Удаление указателей на экземпляры класса Word
@@ -264,7 +234,7 @@ public class TestTask {
         int size = massiv.alCount.size();
         int dump = 0;
         String dumpList = "";
-        System.out.println("Start TestTask.sortMaxFile " + new Date().toString());
+        System.out.println("\nStart TestTask.sortMaxFile " + new Date().toString());
         for (int i = 0; i <= size - 1 ; i++) {
             for (int j = size - 1; j > i; j--) {
                 if (massiv.alCount.get(j) > massiv.alCount.get(j - 1)) {
@@ -348,25 +318,26 @@ public class TestTask {
 
     // Метод result(N) - выводит в консоль (Standart Out) отсортированные в обратном порядке N слов
     public static void result(int n) {
-        System.out.println("TestTask.result " + new Date().toString());
+        System.out.println("\nTestTask.result " + new Date().toString());
         for (int i = 0; i < n; i++) {
             System.out.print(sortList.alList.get(i));
             System.out.println(" " + sortList.alCount.get(i));
         }
     }
 
-    // Метод result(N, outFile) - ...
-    public static  void result(int n, String outFile) {
-
-    }
-
     public static void main(String[] args) throws IOException {
         // Решаем задачу на примере сортировки нескольких книг - война и мир
         // Файл input.txt увеличен до размера в 166 Mb
 
-        String encoding = "Cp1251";
-        divBigFile(null, encoding, 30);
+        String encoding = "Cp1251"; // Мой пример был в кодировке Cp1251, если вместо параметра encoding написать null,
+                                    // то будет использована кодировака UTF-8
+        divBigFile(null, encoding, 30); // Делим большой файл на маленькие размером 30mb
 
+        /*В цикле происходит обработка каждого файла, результат - (массив слов с количеством повторений) -
+        добавляется в файл OutTemp_analizeList.txt
+        Анализ происходит методом перебора, что занимает много времени.
+        Готов предложить другие методы обработки массива.
+        */
         for (int i = 0; i <= countFiles; i++) {
             String nameFile = "smallInput" + i + ".txt";
             workFile(nameFile, encoding);
@@ -376,10 +347,10 @@ public class TestTask {
 
         String nameFile = "OutTemp_analizeList.txt";
         loadFile(nameFile, "Cp1251", "sortList");
-        analizeFile("sortList");
-        sortMaxFile(analizeList);
-        result();
-        safeFile("result",sortList);
+        analizeFile("sortList"); // Поиск одинаковых слов и сложение количеств повторов
+        sortMaxFile(analizeList); // Сортировка итогового списочного массива
+        result(10); // Вывод 10 слов в нижнем регистре с количеством упоминаний каждого слова в тексте
+        safeFile("result",sortList); // Сохраниние отсортированного списка в файл "OutTemp_result.txt"
     }
 }
 
