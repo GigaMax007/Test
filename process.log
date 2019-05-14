@@ -1,0 +1,173 @@
+"C:\Program Files\Java\jdk-12.0.1\bin\java.exe" -Xmx512m "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.1.1\lib\idea_rt.jar=49783:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.1.1\bin" -Dfile.encoding=windows-1251 -classpath C:\Users\Sveta\IdeaProjects\TestTask\out\production\TestTask ru.gigamax.test.TestTask
+
+Start TestTask.workFile Mon May 13 23:34:21 YEKT 2019
+Read File = smallInput0.txt
+workList.alList.size() = 4036966
+Translate workList to lower case:Mon May 13 23:34:43 YEKT 2019
+
+Start TestTask.analizeFile Mon May 13 23:34:44 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@4d405ef7
+workList.alList.size() = 4036966
+workList.alCount.size() = 0
+
+Word countig end: Tue May 14 02:00:57 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@4d405ef7
+workList.alCount.size() = 58357
+workList.alList.size = 58357
+analizeList = ru.gigamax.test.TestTask$Word@4d405ef7
+analizeList.alList.size() = 58357
+analizeList.alCount.size() = 58357
+Start TestTask.safeFile Tue May 14 02:01:01 YEKT 2019
+OutTemp_analizeList.txt safed at Tue May 14 02:01:09 YEKT 2019
+
+Start TestTask.workFile Tue May 14 02:01:10 YEKT 2019
+Read File = smallInput1.txt
+workList.alList.size() = 4037404
+Translate workList to lower case:Tue May 14 02:01:31 YEKT 2019
+
+Start TestTask.analizeFile Tue May 14 02:01:32 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@5910e440
+workList.alList.size() = 4037404
+workList.alCount.size() = 0
+
+Word countig end: Tue May 14 04:22:02 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@5910e440
+workList.alCount.size() = 58356
+workList.alList.size = 58356
+analizeList = ru.gigamax.test.TestTask$Word@5910e440
+analizeList.alList.size() = 58356
+analizeList.alCount.size() = 58356
+Start TestTask.safeFile Tue May 14 04:22:02 YEKT 2019
+OutTemp_analizeList.txt safed at Tue May 14 04:22:06 YEKT 2019
+
+Start TestTask.workFile Tue May 14 04:22:06 YEKT 2019
+Read File = smallInput2.txt
+workList.alList.size() = 4037240
+Translate workList to lower case:Tue May 14 04:22:16 YEKT 2019
+
+Start TestTask.analizeFile Tue May 14 04:22:17 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@6267c3bb
+workList.alList.size() = 4037240
+workList.alCount.size() = 0
+
+Word countig end: Tue May 14 06:39:09 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@6267c3bb
+workList.alCount.size() = 58357
+workList.alList.size = 58357
+analizeList = ru.gigamax.test.TestTask$Word@6267c3bb
+analizeList.alList.size() = 58357
+analizeList.alCount.size() = 58357
+Start TestTask.safeFile Tue May 14 06:39:09 YEKT 2019
+OutTemp_analizeList.txt safed at Tue May 14 06:39:10 YEKT 2019
+
+Start TestTask.workFile Tue May 14 06:39:10 YEKT 2019
+Read File = smallInput3.txt
+workList.alList.size() = 4038028
+Translate workList to lower case:Tue May 14 06:39:21 YEKT 2019
+
+Start TestTask.analizeFile Tue May 14 06:39:22 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@533ddba
+workList.alList.size() = 4038028
+workList.alCount.size() = 0
+
+Word countig end: Tue May 14 08:54:35 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@533ddba
+workList.alCount.size() = 58357
+workList.alList.size = 58357
+analizeList = ru.gigamax.test.TestTask$Word@533ddba
+analizeList.alList.size() = 58357
+analizeList.alCount.size() = 58357
+Start TestTask.safeFile Tue May 14 08:54:35 YEKT 2019
+OutTemp_analizeList.txt safed at Tue May 14 08:54:36 YEKT 2019
+
+Start TestTask.workFile Tue May 14 08:54:36 YEKT 2019
+Read File = smallInput4.txt
+workList.alList.size() = 4038945
+Translate workList to lower case:Tue May 14 08:54:41 YEKT 2019
+
+Start TestTask.analizeFile Tue May 14 08:54:42 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@246b179d
+workList.alList.size() = 4038945
+workList.alCount.size() = 0
+ 
+Word countig end: Tue May 14 18:56:29 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@246b179d
+workList.alCount.size() = 58356
+workList.alList.size = 58356
+analizeList = ru.gigamax.test.TestTask$Word@246b179d
+analizeList.alList.size() = 58356
+analizeList.alCount.size() = 58356
+Start TestTask.safeFile Tue May 14 18:56:29 YEKT 2019
+OutTemp_analizeList.txt safed at Tue May 14 18:56:31 YEKT 2019
+
+Start TestTask.workFile Tue May 14 18:56:31 YEKT 2019
+Read File = smallInput5.txt
+workList.alList.size() = 4037219
+Translate workList to lower case:Tue May 14 18:56:47 YEKT 2019
+
+Start TestTask.analizeFile Tue May 14 18:56:48 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@7a07c5b4
+workList.alList.size() = 4037219
+workList.alCount.size() = 0
+
+Word countig end: Tue May 14 21:26:35 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@7a07c5b4
+workList.alCount.size() = 58356
+workList.alList.size = 58356
+analizeList = ru.gigamax.test.TestTask$Word@7a07c5b4
+analizeList.alList.size() = 58356
+analizeList.alCount.size() = 58356
+Start TestTask.safeFile Tue May 14 21:26:37 YEKT 2019
+OutTemp_analizeList.txt safed at Tue May 14 21:26:42 YEKT 2019
+
+Start TestTask.workFile Tue May 14 21:26:42 YEKT 2019
+Read File = smallInput6.txt
+workList.alList.size() = 2679831
+Translate workList to lower case:Tue May 14 21:28:18 YEKT 2019
+
+Start TestTask.analizeFile Tue May 14 21:28:19 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@26a1ab54
+workList.alList.size() = 2679831
+workList.alCount.size() = 0
+
+Word countig end: Tue May 14 22:44:53 YEKT 2019
+workList = ru.gigamax.test.TestTask$Word@26a1ab54
+workList.alCount.size() = 58357
+workList.alList.size = 58357
+analizeList = ru.gigamax.test.TestTask$Word@26a1ab54
+analizeList.alList.size() = 58357
+analizeList.alCount.size() = 58357
+Start TestTask.safeFile Tue May 14 22:44:53 YEKT 2019
+OutTemp_analizeList.txt safed at Tue May 14 22:44:54 YEKT 2019
+Start TestTask.loadFile Tue May 14 22:44:54 YEKT 2019
+End TestTask.loadFile Tue May 14 22:45:42 YEKT 2019
+
+Start TestTask.analizeFile Tue May 14 22:45:42 YEKT 2019
+nameList = ru.gigamax.test.TestTask$Word@46f7f36a
+nameList.alList.size() = 408496
+nameList.alCount.size() = 408496
+
+Word countig end: Tue May 14 23:03:57 YEKT 2019
+ = ru.gigamax.test.TestTask$Word@46f7f36a
+nameList.alCount.size() = 58360
+nameList.alList.size = 58360
+analizeList = ru.gigamax.test.TestTask$Word@46f7f36a
+analizeList.alList.size() = 58360
+analizeList.alCount.size() = 58360
+Start TestTask.sortMaxFile Tue May 14 23:03:57 YEKT 2019
+End TestTask.sortMaxFile Tue May 14 23:05:04 YEKT 2019
+TestTask.result Tue May 14 23:05:04 YEKT 2019
+и 1134052
+Ч 893677
+в 731817
+не 441121
+он 374459
+что 352570
+на 346431
+с 315079
+как 208760
+его 201583
+Start TestTask.safeFile Tue May 14 23:05:04 YEKT 2019
+OutTemp_result.txt safed at Tue May 14 23:05:04 YEKT 2019
+
+Process finished with exit code 0

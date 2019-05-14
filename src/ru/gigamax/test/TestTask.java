@@ -37,17 +37,29 @@ import java.util.StringTokenizer;
  * Результат  - отсортированный в обратном порядке,
  * список слов в нижнем регистре с количеством упоминаний каждого слова в тексте!!!
  *
- * @autor Максим Кишинский, kmaxk2006@mail.ru, т.+7(910)73-88-00-9
+ * @autor Максим Кишинский, kmaxk2006@mail.ru, т.+7(910)73-88-00-9, https://github.com/GigaMax007/Test.git
  *
- * @version 1.0
+ * @version 1.2
  */
 public class TestTask {
     public static int countFiles = 0; // Переменная - количество файлов, на которые будет разбит большой файл.
     public static Word workList;
-    public static Word lowerCase;
     public static Word analizeList;
     public static Word sortList;
+    private static long fileSize;
 
+    public static long getFileSize(String name) {
+        String fsName = name != null ? name : "input.txt";
+
+        File f = new File(fsName);
+        fileSize = f.length();
+        System.out.println(fileSize);
+        return fileSize;
+    }
+
+    public static void setFileSize(long fileSize) {
+        TestTask.fileSize = fileSize;
+    }
 
     // Создание объекта типа Word с двумя полями: списочный массив alList - слова и alCount - количество их в файле
     public static class Word {
@@ -95,7 +107,7 @@ public class TestTask {
     // Метод деления файла большой длины на число (countFiles + 1) файлов поменьше.
     // по умолчанию файл - "input.txt" , кодировка - "UTF-8"
     public static void divBigFile() {
-        int sizeMb = 30;
+        int sizeMb = 25;
         int maxlines = sizeMb;
         BufferedWriter writer = null;
         String dBVName = "input.txt";
@@ -136,7 +148,7 @@ public class TestTask {
         try {
             reader = new BufferedReader(new InputStreamReader(new FileInputStream(wfName), wfEncoding));
             for (String line; (line = reader.readLine()) != null; ) {
-                StringTokenizer st = new StringTokenizer(line, " \t\r\f\\\'\"():,.&!|/«»@;*{}[]?");
+                StringTokenizer st = new StringTokenizer(line, " \t\r\f\\\'\"():,.&!|/«»@;*{}[]? ");
                 while (st.hasMoreTokens()) {
                     workList.alList.add(st.nextToken());
                     }
@@ -145,67 +157,78 @@ public class TestTask {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
+        System.out.println("workList.alList.size() = " + workList.alList.size());
         System.out.println("Translate workList to lower case:" + new Date().toString());
-        lowerCase = new Word();
         // Перевод массива в нижний регистр
         for (int i = 0; i < workList.alList.size(); i++) {
-            lowerCase.alList.add(workList.alList.get(i).toLowerCase());
+            workList.alList.set(i, workList.alList.get(i).toLowerCase());
         }
-        System.out.println("lowerCase.alList.size() = " + lowerCase.alList.size());
     }
 
     // Подсчет количества повторений и удаление повторов слов
     public static void analizeFile() {
         System.out.println("\nStart TestTask.analizeFile " + new Date().toString());
-        int z = lowerCase.alList.size() - 1;
+        System.out.println("workList = " + workList);
+        System.out.println("workList.alList.size() = " + workList.alList.size());
+        System.out.println("workList.alCount.size() = " + workList.alCount.size());
+        int z = workList.alList.size() - 1;
         int c = 0; // счетчик
         for (int i = 0; i < z; i++) {
             for (int j = z; (j > i) & (j > 0); j--) {
-                if (lowerCase.alList.get(j).equals(lowerCase.alList.get(i))) {
+                if (workList.alList.get(j).equals(workList.alList.get(i))) {
                     c++;
-                    lowerCase.alList.remove(j);
+                    workList.alList.remove(j);
                 }
             }
             z = z - c;
-            lowerCase.alCount.add(c + 1);
+            workList.alCount.add(c + 1);
             c = 0; // счетчик обнулен
-            if ((i == z - 1)&!(lowerCase.alList.get(z - 1).equals(lowerCase.alList.get(z)))) lowerCase.alCount.add(1);
+            if ((i == z - 1)&!(workList.alList.get(z - 1).equals(workList.alList.get(z)))) workList.alCount.add(1);
         }
         System.out.println("\nWord countig end: " + new Date().toString());
-        analizeList = lowerCase;
+        System.out.println("workList = " + workList);
+        System.out.println("workList.alCount.size() = " + workList.alCount.size());
+        System.out.println("workList.alList.size = " + workList.alList.size());
+        analizeList = workList;
+        System.out.println("analizeList = " + analizeList);
         System.out.println("analizeList.alList.size() = " + analizeList.alList.size());
+        System.out.println("analizeList.alCount.size() = " + analizeList.alCount.size());
         // Удаление указателей на экземпляры класса Word
         workList = null;
-        lowerCase = null;
     }
 
-    public static void analizeFile(String nameList) {
-        if (nameList == "sortList") {
+    public static void analizeFile(Word nameList) {
+
             System.out.println("\nStart TestTask.analizeFile " + new Date().toString());
-            System.out.println("sortList.alList.size() = " + sortList.alList.size());
-            int z = sortList.alList.size() - 1;
+            System.out.println("nameList = " + nameList);
+            System.out.println("nameList.alList.size() = " + nameList.alList.size());
+            System.out.println("nameList.alCount.size() = " + nameList.alCount.size());
+            int z = nameList.alList.size() - 1;
             int c = 0; // счетчик
             for (int i = 0; i < z; i++) {
                 for (int j = z; (j > i) & (j > 0); j--) {
-                    if (sortList.alList.get(j).equals(sortList.alList.get(i))) {
+                    if (nameList.alList.get(j).equals(nameList.alList.get(i))) {
                         c++;
-                        sortList.alCount.set(i, sortList.alCount.get(i) + sortList.alCount.get(j));
-                        sortList.alList.remove(j);
-                        sortList.alCount.remove(j);
+                        nameList.alCount.set(i, nameList.alCount.get(i) + nameList.alCount.get(j));
+                        nameList.alList.remove(j);
+                        nameList.alCount.remove(j);
                     }
                 }
                 z = z - c;
                 c = 0; // счетчик обнулен
             }
             System.out.println("\nWord countig end: " + new Date().toString());
-            analizeList = sortList;
+            System.out.println(" = " + nameList);
+            System.out.println("nameList.alCount.size() = " + nameList.alCount.size());
+            System.out.println("nameList.alList.size = " + nameList.alList.size());
+            analizeList = nameList;
+            System.out.println("analizeList = " + analizeList);
             System.out.println("analizeList.alList.size() = " + analizeList.alList.size());
             System.out.println("analizeList.alCount.size() = " + analizeList.alCount.size());
             // Удаление указателей на экземпляры класса Word
             workList = null;
-            lowerCase = null;
             sortList = null;
-        }
+
     }
 
     // Сортирует массивы от min до max - значений по количеству слов объекта методом пузырька
@@ -234,7 +257,7 @@ public class TestTask {
         int size = massiv.alCount.size();
         int dump = 0;
         String dumpList = "";
-        System.out.println("\nStart TestTask.sortMaxFile " + new Date().toString());
+        System.out.println("Start TestTask.sortMaxFile " + new Date().toString());
         for (int i = 0; i <= size - 1 ; i++) {
             for (int j = size - 1; j > i; j--) {
                 if (massiv.alCount.get(j) > massiv.alCount.get(j - 1)) {
@@ -291,7 +314,6 @@ public class TestTask {
         // остальные переменный обнуляем
         analizeList = nameList == "analizeList" ? massiv : null;
         workList = nameList == "workList" ? massiv : null;
-        lowerCase = nameList == "lowerCase" ? massiv : null;
         sortList = nameList == "sortList" ? massiv : null;
         massiv = null;
         System.out.println("End TestTask.loadFile " + new Date().toString());
@@ -318,41 +340,38 @@ public class TestTask {
 
     // Метод result(N) - выводит в консоль (Standart Out) отсортированные в обратном порядке N слов
     public static void result(int n) {
-        System.out.println("\nTestTask.result " + new Date().toString());
+        System.out.println("TestTask.result " + new Date().toString());
         for (int i = 0; i < n; i++) {
             System.out.print(sortList.alList.get(i));
             System.out.println(" " + sortList.alCount.get(i));
         }
     }
 
+    // Метод result(N, outFile) - ...
+    public static  void result(int n, String outFile) {
+
+    }
+
     public static void main(String[] args) throws IOException {
         // Решаем задачу на примере сортировки нескольких книг - война и мир
         // Файл input.txt увеличен до размера в 166 Mb
 
-        String encoding = "Cp1251"; // Мой пример был в кодировке Cp1251, если вместо параметра encoding написать null,
-                                    // то будет использована кодировака UTF-8
-        divBigFile(null, encoding, 30); // Делим большой файл на маленькие размером 30mb
+        String encoding = "Cp1251";
+        divBigFile(null, encoding, 25);
 
-        /*В цикле происходит обработка каждого файла, результат - (массив слов с количеством повторений) -
-        добавляется в файл OutTemp_analizeList.txt
-        Анализ происходит методом перебора, что занимает много времени.
-        Готов предложить другие методы обработки массива.
-        */
         for (int i = 0; i <= countFiles; i++) {
             String nameFile = "smallInput" + i + ".txt";
             workFile(nameFile, encoding);
+//            chekIt(workList);
             analizeFile();
             safeFile("analizeList", analizeList);
         }
 
         String nameFile = "OutTemp_analizeList.txt";
         loadFile(nameFile, "Cp1251", "sortList");
-        analizeFile("sortList"); // Поиск одинаковых слов и сложение количеств повторов
-        sortMaxFile(analizeList); // Сортировка итогового списочного массива
-        result(10); // Вывод 10 слов в нижнем регистре с количеством упоминаний каждого слова в тексте
-        safeFile("result",sortList); // Сохраниние отсортированного списка в файл "OutTemp_result.txt"
+        analizeFile(sortList);
+        sortMaxFile(analizeList);
+        result();
+        safeFile("result",sortList);
     }
 }
-
-
-
