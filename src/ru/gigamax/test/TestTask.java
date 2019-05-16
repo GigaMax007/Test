@@ -5,63 +5,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.StringTokenizer;
 
-/*
-*         РўРµСЃС‚РѕРІРѕРµ Р·Р°РґР°РЅРёРµ РЅР° РІР°РєР°РЅСЃРёСЋ Java СЂР°Р·СЂР°Р±РѕС‚С‡РёРє-СЃС‚Р°Р¶РµСЂ
-*
-* Р Р°Р·СЂР°Р±РѕС‚Р°С‚СЊ РїСЂРѕРіСЂР°РјРјСѓ РЅР° Java, РєРѕС‚РѕСЂР°СЏ РЅР°Р№РґРµС‚ N (N=10) СЃР°РјС‹С… СѓРїРѕРјРёРЅР°РµРјС‹С… СЃР»РѕРІ РІ Р±РѕР»СЊС€РѕРј С‚РµРєСЃС‚РѕРІРѕРј С„Р°Р№Р»Рµ.
-* Р РµР·СѓР»СЊС‚Р°С‚ вЂ” СЃРїРёСЃРѕРє СЃР»РѕРІ РІ РЅРёР¶РЅРµРј СЂРµРіРёСЃС‚СЂРµ СЃ РєРѕР»РёС‡РµСЃС‚РІРѕРј СѓРїРѕРјРёРЅР°РЅРёР№ РєР°Р¶РґРѕРіРѕ СЃР»РѕРІР° РІ С‚РµРєСЃС‚Рµ,
-* РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅ РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ РїРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ СѓРїРѕРјРёРЅР°РЅРёР№. Р’С‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р° РІ РєРѕРЅСЃРѕР»СЊ (standart out).
-*
-* РўСЂРµР±РѕРІР°РЅРёСЏ:
-*
-* РћРіСЂР°РЅРёС‡РµРЅРёРµ РїРѕ РћР—РЈ вЂ” РЅРµ Р±РѕР»РµРµ 512РњР‘ (-Xmx512m).
-*
-* Р Р°Р·РјРµСЂ С‚РµРєСЃС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р° РЅР°РјРЅРѕРіРѕ Р±РѕР»СЊС€Рµ РћР—РЈ.
-* РљРѕР»РёС‡РµСЃС‚РІРѕ СѓРЅРёРєР°Р»СЊРЅС‹С… СЃР»РѕРІ РІ С‚РµРєСЃС‚РѕРІРѕРј С„Р°Р№Р»Рµ РЅРµ Р±РѕР»РµРµ 10000 С€С‚.
-*
-* РџСЂРёРјРµСЂ СЂР°Р±РѕС‚С‹.
-*
-* Р¤Р°Р№Р» РЅР° РІС…РѕРґРµ, input.txt:
-* РњР°РјР° РјС‹Р»Р° СЂР°РјСѓ, СЂР°РјР° РјС‹Р»Р° РјР°РјСѓ.
-*
-* Р’С‹РІРѕРґ:
-* РјС‹Р»Р° 2
-* РјР°РјР° 1
-* СЂР°РјСѓ 1
-* СЂР°РјР° 1
-* РјР°РјСѓ 1
-*/
-
 /**
- * РљР»Р°СЃСЃ TestTask РЅР°С…РѕРґРёС‚ N (N=10) СЃР°РјС‹С… СѓРїРѕРјРёРЅР°РµРјС‹С… СЃР»РѕРІ РІ Р±РѕР»СЊС€РѕРј С‚РµРєСЃС‚РѕРІРѕРј С„Р°Р№Р»Рµ Рё РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р° РІ РєРѕРЅСЃРѕР»СЊ (standart out).
- * Р РµР·СѓР»СЊС‚Р°С‚  - РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ,
- * СЃРїРёСЃРѕРє СЃР»РѕРІ РІ РЅРёР¶РЅРµРј СЂРµРіРёСЃС‚СЂРµ СЃ РєРѕР»РёС‡РµСЃС‚РІРѕРј СѓРїРѕРјРёРЅР°РЅРёР№ РєР°Р¶РґРѕРіРѕ СЃР»РѕРІР° РІ С‚РµРєСЃС‚Рµ!!!
+ * Класс TestTask находит N (N=10) самых упоминаемых слов в большом текстовом файле и вывод результата в консоль (standart out).
+ * Результат  - отсортированный в обратном порядке,
+ * список слов в нижнем регистре с количеством упоминаний каждого слова в тексте!!!
  *
- * @autor РњР°РєСЃРёРј РљРёС€РёРЅСЃРєРёР№, kmaxk2006@mail.ru, С‚.+7(910)73-88-00-9, https://github.com/GigaMax007/Test.git
+ * @autor Максим Кишинский, kmaxk2006@mail.ru, т.+7(910)73-88-00-9, https://github.com/GigaMax007/Test.git
  *
  * @version 1.2
  */
 public class TestTask {
-    public static int countFiles = 0; // РџРµСЂРµРјРµРЅРЅР°СЏ - РєРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ, РЅР° РєРѕС‚РѕСЂС‹Рµ Р±СѓРґРµС‚ СЂР°Р·Р±РёС‚ Р±РѕР»СЊС€РѕР№ С„Р°Р№Р».
-    public static Word workList;
-    public static Word analizeList;
-    public static Word sortList;
-    private static long fileSize;
+    public static int countFiles = 0; // Переменная - количество файлов, на которые будет разбит большой файл.
+    public static Word workList, analizeList, sortList;
 
-    public static long getFileSize(String name) {
-        String fsName = name != null ? name : "input.txt";
-
-        File f = new File(fsName);
-        fileSize = f.length();
-        System.out.println(fileSize);
-        return fileSize;
-    }
-
-    public static void setFileSize(long fileSize) {
-        TestTask.fileSize = fileSize;
-    }
-
-    // РЎРѕР·РґР°РЅРёРµ РѕР±СЉРµРєС‚Р° С‚РёРїР° Word СЃ РґРІСѓРјСЏ РїРѕР»СЏРјРё: СЃРїРёСЃРѕС‡РЅС‹Р№ РјР°СЃСЃРёРІ alList - СЃР»РѕРІР° Рё alCount - РєРѕР»РёС‡РµСЃС‚РІРѕ РёС… РІ С„Р°Р№Р»Рµ
+    // Создание объекта типа Word с двумя полями: списочный массив alList - слова и alCount - количество их в файле
     public static class Word {
         ArrayList<String> alList;
         ArrayList<Integer> alCount;
@@ -72,17 +29,17 @@ public class TestTask {
         }
     }
 
-    // РњРµС‚РѕРґ РґРµР»РµРЅРёСЏ С„Р°Р№Р»Р° Р±РѕР»СЊС€РѕР№ РґР»РёРЅС‹ РЅР° С‡РёСЃР»Рѕ (countFiles + 1) С„Р°Р№Р»РѕРІ РїРѕРјРµРЅСЊС€Рµ.
-    // РС‚РѕРі СЂР°Р±РѕС‚С‹ С„Р°Р№Р»С‹ РІРёРґР° - smallInput0.txt ... smallInput10.txt
-    // name - РёРјСЏ С„Р°Р№Р»Р° Р±РѕР»СЊС€РѕРіРѕ СЂР°Р·РјРµСЂР°, РµСЃР»Рё null, С‚Рѕ РїСЂРёРЅРёРјР°РµС‚ Р·РЅР°С‡РµРЅРёРµ "input.txt"
-    // encoding - РєРѕРґРёСЂРѕРІРєР° С„Р°Р№Р»Р°, РµСЃР»Рё null, С‚Рѕ РїСЂРёРЅРёРјР°РµС‚ Р·РЅР°С‡РµРЅРёРµ "UTF-8"
+    // Метод деления файла большой длины на число (countFiles + 1) файлов поменьше.
+    // Итог работы файлы вида - smallInput0.txt ... smallInput10.txt
+    // name - имя файла большого размера, если null, то принимает значение "input.txt"
+    // encoding - кодировка файла, если null, то принимает значение "UTF-8"
     public static void divBigFile(String name, String encoding, int sizeMb) {
         int maxlines = sizeMb;
         BufferedWriter writer = null;
         String dBVName = name != null ? name : "input.txt";
         String dBVEncoding = encoding != null ? encoding : "UTF-8";
         int count1Mb = 0;
-        long l = 0; // CС‡РµС‚С‡РёРє РґР»РёРЅ СЃС‚СЂРѕРє
+        long l = 0; // Cчетчик длин строк
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(dBVName), dBVEncoding));
             for (String line1; (line1 = reader.readLine()) != null; ) {
@@ -93,7 +50,7 @@ public class TestTask {
                 }
                 if (count1Mb % maxlines == 0) {
                     writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("smallInput" + (count1Mb / maxlines) + ".txt"), dBVEncoding));
-                    countFiles = count1Mb / maxlines; // РС‚РѕРіРѕРІРѕРµ С‡РёСЃР»Рѕ С„Р°Р№Р»РѕРІ СЂР°РІРЅРѕ (countFiles + 1)
+                    countFiles = count1Mb / maxlines; // Итоговое число файлов равно (countFiles + 1)
                 }
                 writer.write(line1);
                 writer.newLine();
@@ -102,53 +59,25 @@ public class TestTask {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-    }
-
-    // РњРµС‚РѕРґ РґРµР»РµРЅРёСЏ С„Р°Р№Р»Р° Р±РѕР»СЊС€РѕР№ РґР»РёРЅС‹ РЅР° С‡РёСЃР»Рѕ (countFiles + 1) С„Р°Р№Р»РѕРІ РїРѕРјРµРЅСЊС€Рµ.
-    // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ С„Р°Р№Р» - "input.txt" , РєРѕРґРёСЂРѕРІРєР° - "UTF-8"
-    public static void divBigFile() {
-        int sizeMb = 25;
-        int maxlines = sizeMb;
-        BufferedWriter writer = null;
-        String dBVName = "input.txt";
-        String dBVEncoding = "UTF-8";
-        int count1Mb = 0;
-        long l = 0; // CС‡РµС‚С‡РёРє РґР»РёРЅ СЃС‚СЂРѕРє
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(dBVName), dBVEncoding));
-            for (String line1; (line1 = reader.readLine()) != null; ) {
-                l += (long)line1.length();
-                if (l > 1048576) {
-                    l = 0;
-                    count1Mb++;
-                }
-                if (count1Mb % maxlines == 0) {
-                    writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("smallInput" + (count1Mb / maxlines) + ".txt"), dBVEncoding));
-                    countFiles = count1Mb / maxlines; // РС‚РѕРіРѕРІРѕРµ С‡РёСЃР»Рѕ С„Р°Р№Р»РѕРІ СЂР°РІРЅРѕ (countFiles + 1)
-                }
-                writer.write(line1);
-                writer.newLine();
-            }
-            writer.flush();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+        for (int i = 0; i <= countFiles; i++) {
+            (new File("smallInput" + i + ".txt")).deleteOnExit();
         }
     }
 
-    // РњРµС‚РѕРґ СЃРѕР·РґР°РµС‚ РјР°СЃСЃРёРІС‹ СЃР»РѕРІ, РІ РЅРёР¶РЅРµРј СЂРµРіРёСЃС‚СЂРµ РёР· С„Р°Р№Р»Р°, Рё РєРѕР»РёС‡РµСЃС‚РІР° РїРѕРІС‚РѕСЂРµРЅРёР№, Рё
-    // Р·Р°РїРёСЃС‹РІР°РµС‚ РёС… РІ СЂР°Р±РѕС‡РёР№ С„Р°Р№Р»
+     // Метод создает массивы слов, в нижнем регистре из файла, и количества повторений, и
+    // записывает их в рабочий файл
     public static void workFile(String name, String encoding) {
         System.out.println("\nStart TestTask.workFile " + new Date().toString());
         String wfName = name != null ? name : "All";
         String wfEncoding = encoding != null ? encoding : "UTF-8";
         workList = new Word();
         BufferedReader reader;
-        // РЎС‡РёС‚С‹РІР°РµРј С„Р°Р№Р» name, РЅР°РїСЂРёРјРµСЂ "smallInput12.txt"
+        // Считываем файл name, например "smallInput12.txt"
         System.out.println("Read File = " + wfName);
         try {
             reader = new BufferedReader(new InputStreamReader(new FileInputStream(wfName), wfEncoding));
             for (String line; (line = reader.readLine()) != null; ) {
-                StringTokenizer st = new StringTokenizer(line, " \t\r\f\\\'\"():,.&!|/В«В»@;*{}[]? ");
+                StringTokenizer st = new StringTokenizer(line, " \t\r\f\\\'\"():,.&!|/«»@;*{}[]? ");
                 while (st.hasMoreTokens()) {
                     workList.alList.add(st.nextToken());
                     }
@@ -159,20 +88,20 @@ public class TestTask {
             }
         System.out.println("workList.alList.size() = " + workList.alList.size());
         System.out.println("Translate workList to lower case:" + new Date().toString());
-        // РџРµСЂРµРІРѕРґ РјР°СЃСЃРёРІР° РІ РЅРёР¶РЅРёР№ СЂРµРіРёСЃС‚СЂ
+        // Перевод массива в нижний регистр
         for (int i = 0; i < workList.alList.size(); i++) {
             workList.alList.set(i, workList.alList.get(i).toLowerCase());
         }
     }
 
-    // РџРѕРґСЃС‡РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° РїРѕРІС‚РѕСЂРµРЅРёР№ Рё СѓРґР°Р»РµРЅРёРµ РїРѕРІС‚РѕСЂРѕРІ СЃР»РѕРІ
+    // Подсчет количества повторений и удаление повторов слов
     public static void analizeFile() {
         System.out.println("\nStart TestTask.analizeFile " + new Date().toString());
         System.out.println("workList = " + workList);
         System.out.println("workList.alList.size() = " + workList.alList.size());
         System.out.println("workList.alCount.size() = " + workList.alCount.size());
         int z = workList.alList.size() - 1;
-        int c = 0; // СЃС‡РµС‚С‡РёРє
+        int c = 0; // счетчик
         for (int i = 0; i < z; i++) {
             for (int j = z; (j > i) & (j > 0); j--) {
                 if (workList.alList.get(j).equals(workList.alList.get(i))) {
@@ -182,7 +111,7 @@ public class TestTask {
             }
             z = z - c;
             workList.alCount.add(c + 1);
-            c = 0; // СЃС‡РµС‚С‡РёРє РѕР±РЅСѓР»РµРЅ
+            c = 0; // счетчик обнулен
             if ((i == z - 1)&!(workList.alList.get(z - 1).equals(workList.alList.get(z)))) workList.alCount.add(1);
         }
         System.out.println("\nWord countig end: " + new Date().toString());
@@ -193,18 +122,17 @@ public class TestTask {
         System.out.println("analizeList = " + analizeList);
         System.out.println("analizeList.alList.size() = " + analizeList.alList.size());
         System.out.println("analizeList.alCount.size() = " + analizeList.alCount.size());
-        // РЈРґР°Р»РµРЅРёРµ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° СЌРєР·РµРјРїР»СЏСЂС‹ РєР»Р°СЃСЃР° Word
+        // Удаление указателей на экземпляры класса Word
         workList = null;
     }
 
     public static void analizeFile(Word nameList) {
-
             System.out.println("\nStart TestTask.analizeFile " + new Date().toString());
             System.out.println("nameList = " + nameList);
             System.out.println("nameList.alList.size() = " + nameList.alList.size());
             System.out.println("nameList.alCount.size() = " + nameList.alCount.size());
             int z = nameList.alList.size() - 1;
-            int c = 0; // СЃС‡РµС‚С‡РёРє
+            int c = 0; // счетчик
             for (int i = 0; i < z; i++) {
                 for (int j = z; (j > i) & (j > 0); j--) {
                     if (nameList.alList.get(j).equals(nameList.alList.get(i))) {
@@ -215,7 +143,7 @@ public class TestTask {
                     }
                 }
                 z = z - c;
-                c = 0; // СЃС‡РµС‚С‡РёРє РѕР±РЅСѓР»РµРЅ
+                c = 0; // счетчик обнулен
             }
             System.out.println("\nWord countig end: " + new Date().toString());
             System.out.println(" = " + nameList);
@@ -225,13 +153,12 @@ public class TestTask {
             System.out.println("analizeList = " + analizeList);
             System.out.println("analizeList.alList.size() = " + analizeList.alList.size());
             System.out.println("analizeList.alCount.size() = " + analizeList.alCount.size());
-            // РЈРґР°Р»РµРЅРёРµ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° СЌРєР·РµРјРїР»СЏСЂС‹ РєР»Р°СЃСЃР° Word
+            // Удаление указателей на экземпляры класса Word
             workList = null;
             sortList = null;
-
     }
 
-    // РЎРѕСЂС‚РёСЂСѓРµС‚ РјР°СЃСЃРёРІС‹ РѕС‚ min РґРѕ max - Р·РЅР°С‡РµРЅРёР№ РїРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ СЃР»РѕРІ РѕР±СЉРµРєС‚Р° РјРµС‚РѕРґРѕРј РїСѓР·С‹СЂСЊРєР°
+    // Сортирует массивы от min до max - значений по количеству слов объекта методом пузырька
     public static void sortFile(Word massiv) {
         int size = massiv.alCount.size();
         int dump = 0;
@@ -252,7 +179,7 @@ public class TestTask {
         massiv = null;
     }
 
-    // РЎРѕСЂС‚РёСЂСѓРµС‚ РјР°СЃСЃРёРІС‹ РѕС‚ max РґРѕ min - Р·РЅР°С‡РµРЅРёР№ РїРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ СЃР»РѕРІ РѕР±СЉРµРєС‚Р° РјРµС‚РѕРґРѕРј РїСѓР·С‹СЂСЊРєР°
+    // Сортирует массивы от max до min - значений по количеству слов объекта методом пузырька
     public static void sortMaxFile(Word massiv) {
         int size = massiv.alCount.size();
         int dump = 0;
@@ -275,11 +202,11 @@ public class TestTask {
         System.out.println("End TestTask.sortMaxFile " + new Date().toString());
     }
 
-    // РњРµС‚РѕРґ СЃРѕС…СЂР°РЅСЏРµС‚ СЃРїРёСЃРѕРє РІРѕ РІСЂРµРјРµРЅРЅС‹Р№ С„Р°Р№Р», РїРѕРІС‚РѕСЂРЅС‹Р№ РІС‹Р·РѕРІ РґРѕРїРёС€РµС‚ РЅРѕРІС‹Рµ РґР°РЅРЅС‹Рµ Рє РёРјРµСЋС‰РёРјСЃСЏ РІ С„Р°Р№Р»Рµ
+    // Метод сохраняет список во временный файл, повторный вызов допишет новые данные к имеющимся в файле
     public static void  safeFile(String nameFile, Word massiv) {
         String sfNameFile = "OutTemp_" + nameFile + ".txt";
         System.out.println("Start TestTask.safeFile " + new Date().toString());
-        // РЎСЂР°РІРЅРµРЅРёРµ СЂР°Р·РјРµСЂРѕРІ СЃРїРёСЃРєР° СЃР»РѕРІ Рё РєРѕР»РёС‡РµСЃС‚РІР° РёС… РІ С„Р°Р№Р»Рµ, РґРѕР±Р°РІР»СЏРµС‚ СЌР»РµРјРµРЅС‚Р° 0 Рє alCount
+        // Сравнение размеров списка слов и количества их в файле, добавляет элемента 0 к alCount
         if (massiv.alList.size() > massiv.alCount.size()) massiv.alCount.add(0);
         try (FileWriter writer1 = new FileWriter(sfNameFile, true)) {
             for (int i = 0; i < massiv.alList.size(); i++) {
@@ -294,7 +221,7 @@ public class TestTask {
         System.out.println(sfNameFile + " safed at " + (new Date().toString()));
     }
 
-    // РњРµС‚РѕРґ Р·Р°РіСЂСѓР¶Р°РµС‚ СЃРїРёСЃРѕРє СЃР»РѕРІ РёР· С„Р°Р№Р»Р° name Рё РїСЂРёСЃРІР°РёРІР°РµС‚ РїРµСЂРµРјРµРЅРЅРѕР№ massiv
+    // Метод загружает список слов из файла name и присваивает переменной massiv
     public static void loadFile(String name, String encoding,String nameList) throws IOException {
         System.out.println("Start TestTask.loadFile " + new Date().toString());
         Word massiv = new Word();
@@ -310,8 +237,8 @@ public class TestTask {
                 c++;
             }
         }
-        // Р—Р°РіСЂСѓР¶Р°РµРј СЃРїРёСЃРѕРє СЃР»РѕРІ РёР· РІСЂРµРјРµРЅРЅРѕРіРѕ С„Р°Р№Р»Р° Рё РѕРґРЅРѕРјСѓ РёР· СѓРєР°Р·Р°С‚РµР»РµР№ РїСЂРёСЃРІР°РёРІР°РµРј РјР°СЃСЃРёРІ,
-        // РѕСЃС‚Р°Р»СЊРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Р№ РѕР±РЅСѓР»СЏРµРј
+        // Загружаем список слов из временного файла и одному из указателей присваиваем массив,
+        // остальные переменный обнуляем
         analizeList = nameList == "analizeList" ? massiv : null;
         workList = nameList == "workList" ? massiv : null;
         sortList = nameList == "sortList" ? massiv : null;
@@ -319,7 +246,7 @@ public class TestTask {
         System.out.println("End TestTask.loadFile " + new Date().toString());
     }
 
-    // Р’С‹РІРѕРґ РІ РєРѕРЅСЃРѕР»СЊ РґР»СЏ РїСЂРѕРІРµСЂРєРё РѕР±СЉРµРєС‚Р°, РЅР° РєРѕС‚РѕСЂС‹Р№ СЃСЃС‹Р»Р°РµС‚СЃСЏ РїРµСЂРµРјРµРЅРЅР°СЏ
+    // Вывод в консоль для проверки объекта, на который ссылается переменная
     public static void chekIt(Word massiv) {
         for (int i = 0; i < massiv.alList.size(); i++) {
             if (massiv.alCount.size() == massiv.alList.size())
@@ -328,8 +255,8 @@ public class TestTask {
         }
     }
 
-    // Р’С‹РІРѕРґ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕР№ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё
-    // РјРµС‚РѕРґ result() - РІС‹РІРѕРґРёС‚ РІ РєРѕРЅСЃРѕР»СЊ (Standart Out) РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рµ РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ 10 СЃР»РѕРІ
+    // Вывод отсортированной последовательности
+    // метод result() - выводит в консоль (Standart Out) отсортированные в обратном порядке 10 слов
     public static void result() {
         System.out.println("TestTask.result " + new Date().toString());
         for (int i = 0; i < 10; i++) {
@@ -338,30 +265,14 @@ public class TestTask {
         }
     }
 
-    // РњРµС‚РѕРґ result(N) - РІС‹РІРѕРґРёС‚ РІ РєРѕРЅСЃРѕР»СЊ (Standart Out) РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рµ РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ N СЃР»РѕРІ
-    public static void result(int n) {
-        System.out.println("TestTask.result " + new Date().toString());
-        for (int i = 0; i < n; i++) {
-            System.out.print(sortList.alList.get(i));
-            System.out.println(" " + sortList.alCount.get(i));
-        }
-    }
-
-    // РњРµС‚РѕРґ result(N, outFile) - ...
-    public static  void result(int n, String outFile) {
-
-    }
-
     public static void main(String[] args) throws IOException {
-        // Р РµС€Р°РµРј Р·Р°РґР°С‡Сѓ РЅР° РїСЂРёРјРµСЂРµ СЃРѕСЂС‚РёСЂРѕРІРєРё РЅРµСЃРєРѕР»СЊРєРёС… РєРЅРёРі - РІРѕР№РЅР° Рё РјРёСЂ
-        // Р¤Р°Р№Р» input.txt СѓРІРµР»РёС‡РµРЅ РґРѕ СЂР°Р·РјРµСЂР° РІ 166 Mb
-
+        // Решаем задачу на примере сортировки нескольких книг - война и мир
+        // Файл input.txt увеличен до размера в 166 Mb
         String encoding = "Cp1251";
-        divBigFile(null, encoding, 25);
+        divBigFile(null, encoding, 3);
 
-        for (int i = 0; i <= countFiles; i++) {
-            String nameFile = "smallInput" + i + ".txt";
-            workFile(nameFile, encoding);
+        for (int i = 0; i <= 1; i++) {
+            workFile("smallInput" + i + ".txt", encoding);
 //            chekIt(workList);
             analizeFile();
             safeFile("analizeList", analizeList);
