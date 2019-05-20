@@ -6,16 +6,16 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * Класс TestTask находит N (N=10) самых упоминаемых слов в большом текстовом файле и вывод результата в консоль (standart out).
- * Результат  - отсортированный в обратном порядке,
- * список слов в нижнем регистре с количеством упоминаний каждого слова в тексте!!!
+ * РљР»Р°СЃСЃ TestTask РЅР°С…РѕРґРёС‚ N (N=10) СЃР°РјС‹С… СѓРїРѕРјРёРЅР°РµРјС‹С… СЃР»РѕРІ РІ Р±РѕР»СЊС€РѕРј С‚РµРєСЃС‚РѕРІРѕРј С„Р°Р№Р»Рµ Рё РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р° РІ РєРѕРЅСЃРѕР»СЊ (standart out).
+ * Р РµР·СѓР»СЊС‚Р°С‚  - РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ,
+ * СЃРїРёСЃРѕРє СЃР»РѕРІ РІ РЅРёР¶РЅРµРј СЂРµРіРёСЃС‚СЂРµ СЃ РєРѕР»РёС‡РµСЃС‚РІРѕРј СѓРїРѕРјРёРЅР°РЅРёР№ РєР°Р¶РґРѕРіРѕ СЃР»РѕРІР° РІ С‚РµРєСЃС‚Рµ!!!
  *
- * @autor Максим Кишинский, kmaxk2006@mail.ru, т.+7(910)73-88-00-9, https://github.com/GigaMax007
+ * @autor РњР°РєСЃРёРј РљРёС€РёРЅСЃРєРёР№, kmaxk2006@mail.ru, С‚.+7(910)73-88-00-9, https://github.com/GigaMax007
  *
- * @version 2.0
+ * @version 2.1
  */
 public class TestTask {
-    private static final String ENCODING = "Cp1251";
+    private static final String ENCODING = "UTF-8";
     public static int countFiles;
     public static List<String> loadList;
     public static Map<String, Long> tempMap;
@@ -31,12 +31,12 @@ public class TestTask {
         System.out.println("resultMap.size() = " + resultMap.size());
         printSortedMap(resultMap, 10);
     }
-    // Деление большого файла на маленькие mini0...6.tmp
+    // Р”РµР»РµРЅРёРµ Р±РѕР»СЊС€РѕРіРѕ С„Р°Р№Р»Р° РЅР° РјР°Р»РµРЅСЊРєРёРµ mini0...6.tmp
     public static void divBigFile(int sizeMb) {
         final String NAME = "input.txt";
         BufferedWriter writer = null;
         int count1Mb = 0;
-        long l = 0; // Cчетчик длин строк
+        long l = 0; // CС‡РµС‚С‡РёРє РґР»РёРЅ СЃС‚СЂРѕРє
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(NAME), ENCODING));
             for (String line1; (line1 = reader.readLine()) != null; ) {
@@ -47,7 +47,7 @@ public class TestTask {
                 }
                 if ((count1Mb % sizeMb == 0)&(l == 0)) {
                     writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("mini" + (count1Mb / sizeMb) + ".tmp"), ENCODING));
-                    countFiles = count1Mb / sizeMb; // Итоговое число файлов равно (countFiles + 1)
+                    countFiles = count1Mb / sizeMb; // РС‚РѕРіРѕРІРѕРµ С‡РёСЃР»Рѕ С„Р°Р№Р»РѕРІ СЂР°РІРЅРѕ (countFiles + 1)
                 }
                 writer.write(line1);
                 writer.newLine();
@@ -58,18 +58,18 @@ public class TestTask {
             System.out.println(ex.getMessage());
         }
     }
-    // Создание списка loadList и словаря tempMap
+    // РЎРѕР·РґР°РЅРёРµ СЃРїРёСЃРєР° loadList Рё СЃР»РѕРІР°СЂСЏ tempMap
     public static void createMap(String mFileName) {
         BufferedReader reader;
         loadList = new ArrayList<>(1_000_000);
         System.out.println("\nStart load List loadList " + new Date().toString());
 
-        // Считываем файл name, например "mini0.tmp" и создаем список loadList
+        // РЎС‡РёС‚С‹РІР°РµРј С„Р°Р№Р» name, РЅР°РїСЂРёРјРµСЂ "mini0.tmp" Рё СЃРѕР·РґР°РµРј СЃРїРёСЃРѕРє loadList
         System.out.println("Read File = " + mFileName);
         try {
             reader = new BufferedReader(new InputStreamReader(new FileInputStream(mFileName), ENCODING));
             for (String line; (line = reader.readLine()) != null; ) {
-                StringTokenizer st = new StringTokenizer(line, " \t\r\f\\\'\"():,.&!|/«»@;*{}[]?\n");
+                StringTokenizer st = new StringTokenizer(line, " \t\r\f\\\'\"():,.&!|/В«В»@;*{}[]?\n");
                 while (st.hasMoreTokens()) {
                     loadList.add(st.nextToken().toLowerCase());
                 }
@@ -80,20 +80,20 @@ public class TestTask {
         }
         System.out.println("loadList.size() = " + loadList.size());
         System.out.println("\nStart Map tempMap " + new Date().toString());
-        // Создание временного словаря tempMap используя поток...
+        // РЎРѕР·РґР°РЅРёРµ РІСЂРµРјРµРЅРЅРѕРіРѕ СЃР»РѕРІР°СЂСЏ tempMap РёСЃРїРѕР»СЊР·СѓСЏ РїРѕС‚РѕРє...
         tempMap = loadList.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println("tempMap.size() = " + tempMap.size());
-        // Удаление временного файла по завершении работы
+        // РЈРґР°Р»РµРЅРёРµ РІСЂРµРјРµРЅРЅРѕРіРѕ С„Р°Р№Р»Р° РїРѕ Р·Р°РІРµСЂС€РµРЅРёРё СЂР°Р±РѕС‚С‹
         new File(mFileName).deleteOnExit();
     }
-    //Вывод отсортированного словаря в консоль
+    //Р’С‹РІРѕРґ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ СЃР»РѕРІР°СЂСЏ РІ РєРѕРЅСЃРѕР»СЊ
     public static void printSortedMap(Map<String, Long> map, int n){
-        // Начинаем сортировку
+        // РќР°С‡РёРЅР°РµРј СЃРѕСЂС‚РёСЂРѕРІРєСѓ
         map.entrySet().stream().sorted(Map.Entry.<String, Long>comparingByValue().reversed()).limit(n).forEach(System.out::println);
     }
-    // Слияние временных словарей ArrayList<Map<String, Long>> allTempMap
+    // РЎР»РёСЏРЅРёРµ РІСЂРµРјРµРЅРЅС‹С… СЃР»РѕРІР°СЂРµР№ ArrayList<Map<String, Long>> allTempMap
     public static Map<String, Long> mergeTempMaps(Map<String, Long> allTempMap) {
-        /*     Используем метод merge, example:
+        /*     РСЃРїРѕР»СЊР·СѓРµРј РјРµС‚РѕРґ merge, example:
                     m2.forEach((k, v) -> m.merge(k, v, (v1, v2) -> v1 + v2));  */
         allTempMap.forEach((k, v) -> resultMap.merge(k, v, (v1, v2) -> v1 + v2));
         allTempMap.clear();
