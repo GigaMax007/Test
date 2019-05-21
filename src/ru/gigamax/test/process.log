@@ -1,0 +1,36 @@
+"C:\Program Files\Java\jdk-12.0.1\bin\java.exe" -Xmx512m "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.1.1\lib\idea_rt.jar=51967:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2019.1.1\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\Sveta\IdeaProjects\PerceptionGigaMax\out\production\PerceptionGigaMax ru.gigamax.testtasks.seuslab.sortwords.SortByColl
+Start divBigFile Wed May 22 02:53:18 YEKT 2019
+Lines in the file: 1000000
+No. of files to be generated :4
+
+Start load List loadList Wed May 22 02:54:02 YEKT 2019
+Read File = mini1.tmp
+loadList.size() = 2500000
+
+Start Map tempMap Wed May 22 02:54:05 YEKT 2019
+tempMap.size() = 1
+
+Start load List loadList Wed May 22 02:54:05 YEKT 2019
+Read File = mini2.tmp
+loadList.size() = 2500000
+
+Start Map tempMap Wed May 22 02:54:07 YEKT 2019
+tempMap.size() = 1
+
+Start load List loadList Wed May 22 02:54:08 YEKT 2019
+Read File = mini3.tmp
+loadList.size() = 2500000
+
+Start Map tempMap Wed May 22 02:54:09 YEKT 2019
+tempMap.size() = 1
+
+Start load List loadList Wed May 22 02:54:09 YEKT 2019
+Read File = mini4.tmp
+loadList.size() = 2500000
+
+Start Map tempMap Wed May 22 02:54:11 YEKT 2019
+tempMap.size() = 1
+resultMap.size() = 1
+слово=10000000
+
+Process finished with exit code 0
